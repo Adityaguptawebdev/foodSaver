@@ -192,6 +192,40 @@ section[id], #download { scroll-margin-top: calc(var(--nav-h) + 16px); }
   .hero__visual .phone--back { --w: 262px; position: absolute; right: 2%; top: 74px; margin: 0; }
 }
 
+/* ---------- Film ---------- */
+.film { padding: 0 0 clamp(8px, 2vw, 24px); }
+.film__wrap { position: relative; }
+.film__frame {
+  position: relative; aspect-ratio: 16 / 9; overflow: hidden;
+  border-radius: clamp(16px, 2.4vw, 28px); background: var(--ink);
+  box-shadow: 0 0 0 1px rgba(29, 58, 47, .06), 0 50px 100px -48px rgba(21, 43, 34, .5);
+}
+.film__video { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--ink); }
+/* Without JS the video keeps its native controls and this button stays hidden */
+.film__play {
+  position: absolute; left: clamp(12px, 2.6vw, 36px); bottom: clamp(12px, 2.6vw, 36px);
+  display: none; align-items: center; gap: 10px; min-height: 44px; padding: 5px 18px 5px 5px;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: rgba(255, 252, 245, .94); color: var(--ink);
+  font: 600 .95rem/1 var(--sans);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, .45);
+  transition: transform .3s var(--ease), opacity .3s var(--ease), background-color .3s var(--ease);
+}
+.js .film__play { display: inline-flex; }
+.film__play:hover { transform: translateY(-1px); background: var(--paper); }
+.film__play:focus-visible { outline-color: var(--marigold); }
+.film__icon { width: 36px; height: 36px; border-radius: 50%; background: var(--marigold); display: grid; place-items: center; }
+.film__icon svg { width: 16px; height: 16px; margin-left: 2px; }
+.film__time { color: var(--soft); font-weight: 500; font-variant-numeric: tabular-nums; }
+.film__wrap.is-playing .film__play { opacity: 0; pointer-events: none; transform: translateY(6px); }
+/* Small screens: the poster is too small to cover, so the button sits under the film */
+@media (max-width: 640px) {
+  .film__play {
+    position: static; margin-top: 14px;
+    background: var(--paper); box-shadow: none; border: 1px solid var(--line);
+  }
+}
+
 /* ---------- Statement ---------- */
 .statement { padding: clamp(40px, 8vw, 110px) 0 clamp(72px, 11vw, 150px); }
 .statement__text {
@@ -239,6 +273,41 @@ section[id], #download { scroll-margin-top: calc(var(--nav-h) + 16px); }
 .step p { color: var(--soft); font-size: 1.1rem; max-width: 24em; }
 .step__shot { --w: min(72vw, 290px); margin: 36px auto 0; }
 
+/* The stage: one phone whose screen crossfades to the step in view (desktop and phones) */
+.phone--stage img {
+  position: absolute; inset: calc(var(--w) * .026); width: calc(100% - var(--w) * .052);
+  opacity: 0; transform: scale(.985); transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+.phone--stage img:first-child { position: relative; inset: auto; width: 100%; }
+.phone--stage img.is-active { opacity: 1; transform: none; }
+.how__caption { display: none; }
+
+/* Phones and tablets: the phone and a caption stay pinned while the steps scroll past
+   underneath as invisible triggers (screen readers still read them). Without JS the
+   steps simply stack, each with its own screenshot. */
+@media (max-width: 959px) {
+  .js .how__grid > * { grid-area: 1 / 1; }
+  .js .how__sticky {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+    position: sticky; top: var(--nav-h); align-self: start; z-index: 1;
+    height: calc(100vh - var(--nav-h)); height: calc(100svh - var(--nav-h));
+  }
+  /* Phone frame height is about 2.16 × its width; leave room for the caption below */
+  .js .phone--stage {
+    --w: min(70vw, 300px, calc((100vh - var(--nav-h) - 236px) / 2.16));
+    --w: min(70vw, 300px, calc((100svh - var(--nav-h) - 236px) / 2.16));
+  }
+  .js .steps { gap: 0; }
+  .js .step { min-height: 70vh; min-height: 70svh; opacity: 0; }
+  .js .step__shot { display: none; }
+  .js .how__caption { display: grid; width: min(100%, 25rem); min-height: 150px; text-align: center; }
+  .how__cap { grid-area: 1 / 1; opacity: 0; transform: translateY(10px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+  .how__cap.is-active { opacity: 1; transform: none; }
+  .how__cap .step__num { margin-bottom: 10px; }
+  .how__cap-title { font: 600 1.7rem/1.1 var(--serif); letter-spacing: -.015em; font-variation-settings: "opsz" 96; margin-bottom: 8px; }
+  .how__cap p:last-child { color: var(--soft); font-size: 1rem; line-height: 1.5; }
+}
+
 @media (min-width: 960px) {
   .how__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; }
   .steps { gap: 0; }
@@ -255,12 +324,6 @@ section[id], #download { scroll-margin-top: calc(var(--nav-h) + 16px); }
     position: sticky; top: max(calc(var(--nav-h) + 24px), calc(50vh - 330px)); height: max-content;
   }
   .phone--stage { --w: 296px; }
-  .phone--stage img {
-    position: absolute; inset: calc(var(--w) * .026); width: calc(100% - var(--w) * .052);
-    opacity: 0; transform: scale(.985); transition: opacity .6s var(--ease), transform .6s var(--ease);
-  }
-  .phone--stage img:first-child { position: relative; inset: auto; width: 100%; }
-  .phone--stage img.is-active { opacity: 1; transform: none; }
 }
 
 /* ---------- Handoff ---------- */
@@ -453,5 +516,5 @@ section[id], #download { scroll-margin-top: calc(var(--nav-h) + 16px); }
 
 @media (prefers-reduced-motion: reduce) {
   .js .reveal, .js .hero__copy > *, .js .hero__visual .phone { opacity: 1; transform: none; animation: none; transition: none; }
-  .phone--stage img, .step { transition: none; }
+  .phone--stage img, .step, .how__cap { transition: none; }
 }

@@ -9,6 +9,7 @@ main.js             config, download link, iPhone detection, scroll effects
 assets/screens/     cleaned-up app screenshots (WebP)
 assets/brand/       logo mark and icons (copied from foodApp)
 assets/og-image.jpg social preview (1200×630)
+assets/video/       the 1-minute product film (MP4, 19 MB) and its poster frame
 downloads/          the APK the Download buttons serve
 vercel.json         makes Vercel send the APK as a download (attachment, APK type)
 screenshots/        original screenshots: local only, not in git (they show personal details)
@@ -82,6 +83,11 @@ absolute URL to show the preview image.
 
 
 ## How the page behaves
+
+- **Film:** sits right under the hero. It never autoplays because it has a voice-over;
+  the poster shows until someone presses "Watch the film", and it returns to the poster
+  when it ends. To swap the film, replace `assets/video/food-saver-film.mp4` (keep it
+  H.264/AAC MP4) and, if the opening changes, `film-poster.webp`.
 
 - **Android and desktop:** Download buttons in the nav, the hero and the final section.
 - **iPhone and iPad:** the Download buttons are replaced by a short note and an

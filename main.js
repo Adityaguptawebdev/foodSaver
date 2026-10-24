@@ -73,9 +73,31 @@ if ("IntersectionObserver" in window && !reducedMotion) {
 const steps = $$("[data-step]");
 const stageImages = $$(".phone--stage img");
 if (steps.length && "IntersectionObserver" in window) {
+  // Captions under the pinned phone on small screens, built from the steps themselves
+  const pad = (n) => String(n).padStart(2, "0");
+  const caption = document.createElement("div");
+  caption.className = "how__caption";
+  const captions = steps.map((step, i) => {
+    const cap = document.createElement("div");
+    cap.className = i === 0 ? "how__cap is-active" : "how__cap";
+    const num = document.createElement("span");
+    num.className = "step__num";
+    num.textContent = `${pad(i + 1)} / ${pad(steps.length)}`;
+    const title = document.createElement("p");
+    title.className = "how__cap-title";
+    title.textContent = step.querySelector("h3").textContent;
+    const text = document.createElement("p");
+    text.textContent = step.querySelector("p").textContent;
+    cap.append(num, title, text);
+    caption.append(cap);
+    return cap;
+  });
+  document.querySelector(".how__sticky").append(caption);
+
   const setStep = (index) => {
     steps.forEach((step, i) => step.classList.toggle("is-active", i === index));
     stageImages.forEach((img, i) => img.classList.toggle("is-active", i === index));
+    captions.forEach((cap, i) => cap.classList.toggle("is-active", i === index));
   };
   const stepObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -141,4 +163,25 @@ if (parallaxEls.length && !reducedMotion) {
     if (!ticking) { ticking = true; requestAnimationFrame(update); }
   }, { passive: true });
   desktop.addEventListener("change", update);
+}
+
+/* ---------- Film: poster + "Watch the film" until someone presses play ---------- */
+const film = document.querySelector("[data-film]");
+if (film) {
+  const video = film.querySelector("video");
+  const playButton = film.querySelector("[data-film-play]");
+  video.controls = false; // the HTML keeps native controls for visitors without JS
+  const start = () => {
+    film.classList.add("is-playing");
+    video.controls = true;
+    video.play().catch(() => {}); // a blocked play() still leaves the native controls usable
+  };
+  playButton.addEventListener("click", start);
+  video.addEventListener("play", () => film.classList.add("is-playing"));
+  video.addEventListener("ended", () => {
+    // Back to the poster and the button, ready to watch again
+    film.classList.remove("is-playing");
+    video.controls = false;
+    video.load();
+  });
 }
