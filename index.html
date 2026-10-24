@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Food Saver: share surplus food with NGOs and volunteers near you</title>
+  <meta name="description" content="Food Saver connects people with surplus food to NGOs and volunteers nearby. Post in under a minute, get it claimed, hand it over with a 6-digit code. Free Android app.">
+  <meta name="theme-color" content="#F6F0E4">
+  <meta name="author" content="Aditya Gupta">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Food Saver",
+    "operatingSystem": "Android 7.0 or newer",
+    "applicationCategory": "LifestyleApplication",
+    "softwareVersion": "1.1.3",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "author": {
+      "@type": "Person",
+      "name": "Aditya Gupta",
+      "jobTitle": "Full-stack developer",
+      "url": "https://aditya-profile-26.vercel.app/",
+      "sameAs": ["https://www.linkedin.com/in/adityagupta-swe/", "https://github.com/Adityaguptawebdev"]
+    }
+  }
+  </script>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Food Saver: good food shouldn't go to waste">
+  <meta property="og:description" content="Share surplus meals with NGOs and volunteers near you. Free for Android, and on the web.">
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Food Saver: good food shouldn't go to waste">
+  <meta name="twitter:description" content="Share surplus meals with NGOs and volunteers near you. Free for Android, and on the web.">
+  <meta name="twitter:image" content="assets/og-image.jpg">
+
+  <link rel="icon" href="assets/brand/logo-mark.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/brand/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&display=swap">
+  <link rel="preload" as="image" href="assets/screens/donor-home.webp" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Brand mark, reused below with <use> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mark" viewBox="0 0 100 128">
+      <path d="M50 124C41 110 10 82 10 46A40 40 0 1 1 90 46C90 82 59 110 50 124Z" fill="var(--mark-pin, #21402F)"/>
+      <path d="M28 52H72C72 64 62 73 50 73C38 73 28 64 28 52Z" fill="#E9B949"/>
+      <path d="M43 45C39 40 39 35 43 29" fill="none" stroke-width="4.5" stroke-linecap="round" stroke="var(--mark-steam, #F5EFE3)"/>
+      <path d="M56 45C52 40 52 35 56 29" fill="none" stroke-width="4.5" stroke-linecap="round" stroke="var(--mark-steam, #F5EFE3)"/>
+    </symbol>
+    <symbol id="arrow-down" viewBox="0 0 24 24">
+      <path d="M12 4v13m0 0l-5.5-5.5M12 17l5.5-5.5M5 20.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="check" viewBox="0 0 24 24">
+      <path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <a class="brand" href="#top" aria-label="Food Saver, back to top">
+        <svg class="brand__mark" aria-hidden="true"><use href="#mark"/></svg>
+        <span>Food Saver</span>
+      </a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="#how">How it works</a>
+        <a href="#handoff">Handoff</a>
+        <a href="#impact">Impact</a>
+        <a href="#web">Web app</a>
+      </nav>
+      <a class="btn btn--sm" href="downloads/food-saver-v1.1.3.apk" download="food-saver-v1.1.3.apk" data-download data-android-only>Download</a>
+      <a class="btn btn--sm" href="https://donateforgood.vercel.app" data-webapp data-ios-only>Web app</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Food Saver for Android</p>
+          <h1 class="display">Good food <em>shouldn&rsquo;t</em> go&nbsp;to&nbsp;waste.</h1>
+          <p class="lead">Share surplus meals with NGOs and volunteers near you. Post it in under a minute, and someone nearby picks it up.</p>
+
+          <div class="cta" id="download">
+            <div data-android-only>
+              <a class="btn btn--lg" href="downloads/food-saver-v1.1.3.apk" download="food-saver-v1.1.3.apk" data-download>
+                <svg class="btn__icon" aria-hidden="true"><use href="#arrow-down"/></svg>
+                Download for Android
+              </a>
+              <p class="cta__meta" data-meta>Version 1.1.3 · 57 MB · Android 7.0 or newer</p>
+              <p class="cta__links">
+                <a href="https://drive.google.com/file/d/1T5UZ30qV-8bKNedRzMd1Q-939sXJRwia/view?usp=sharing" data-drive target="_blank" rel="noopener">Open in Google Drive</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://donateforgood.vercel.app" data-webapp target="_blank" rel="noopener">Use the web app</a>
+              </p>
+            </div>
+            <div class="ios-note" data-ios-only>
+              <p>Food Saver is on Android for now. On iPhone, use the web app. It&rsquo;s the same account.</p>
+              <a class="btn btn--lg" href="https://donateforgood.vercel.app" data-webapp>Open the web app</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="false">
+          <figure class="phone phone--back" data-parallax="-0.05">
+            <img src="assets/screens/partner-home.webp" width="720" height="1600" alt="Food Saver home screen for an NGO: “Good food is waiting nearby”, with a pickup in progress showing Claimed, On the way, Picked up and Delivered.">
+          </figure>
+          <figure class="phone phone--front" data-parallax="0.03">
+            <img src="assets/screens/donor-home.webp" width="720" height="1600" fetchpriority="high" alt="Food Saver home screen for a donor: “Got extra food today?” with a Post food button, a live donation of veg paneer rice and the donor’s impact.">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statement -->
+    <section class="statement" aria-label="Why Food Saver">
+      <div class="wrap">
+        <p class="statement__text reveal">Every evening, good food is thrown out a few streets away from people who&rsquo;d be glad of it. <span>Food Saver closes that gap with a photo, a pin on the map and a six&#8209;digit code.</span></p>
+      </div>
+    </section>
+
+    <!-- Getting started: sign in + roles -->
+    <section class="roles" id="roles">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow reveal">Getting started</p>
+          <h2 class="h2 reveal">Built for both sides of the&nbsp;table.</h2>
+        </header>
+
+        <div class="roles__grid">
+          <div class="roles__visual">
+            <figure class="phone reveal">
+              <img src="assets/screens/login.webp" width="720" height="1600" loading="lazy" alt="The Welcome back login screen: email and password fields, a Log in button, and Continue with Google.">
+            </figure>
+            <figure class="phone reveal">
+              <img src="assets/screens/signup-role.webp" width="720" height="1600" loading="lazy" alt="Sign-up step 1, How will you help?: choose I have food to share, We’re an NGO, or I’m a volunteer, or sign up with Google.">
+            </figure>
+          </div>
+
+          <ol class="onboard">
+            <li class="reveal">
+              <span class="onboard__num">1</span>
+              <h3>Sign in your way</h3>
+              <p>Use your email and a password, or Continue with Google in one tap. First time with Google? Pick a role and you&rsquo;re&nbsp;in.</p>
+            </li>
+            <li class="reveal">
+              <span class="onboard__num">2</span>
+              <h3>Choose how you&rsquo;ll help</h3>
+              <dl class="role-list">
+                <div><dt>Donor</dt><dd>Restaurants, caterers, events and homes with food to share.</dd></div>
+                <div><dt>NGO</dt><dd>Claim donations and feed the people you serve.</dd></div>
+                <div><dt>Volunteer</dt><dd>Pick up surplus food and deliver it where it&rsquo;s needed.</dd></div>
+              </dl>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how" id="how">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow reveal">How it works</p>
+          <h2 class="h2 reveal">From surplus to served, in five&nbsp;steps.</h2>
+        </header>
+
+        <div class="how__grid">
+          <ol class="steps" data-steps>
+            <li class="step is-active" data-step="0">
+              <span class="step__num">01</span>
+              <h3>Post</h3>
+              <p>Snap a photo, say how much there is and until when it&rsquo;s safe to eat. It takes under a minute.</p>
+              <figure class="phone step__shot"><img src="assets/screens/post-food.webp" width="720" height="1600" loading="lazy" alt="The Share surplus food form: add a photo, then a title and description, with an optional Suggest details with AI button."></figure>
+            </li>
+            <li class="step" data-step="1">
+              <span class="step__num">02</span>
+              <h3>Alert</h3>
+              <p>NGOs and volunteers within their chosen radius see it straight away, with a live alert on their home screen.</p>
+              <figure class="phone step__shot"><img src="assets/screens/alert-nearby.webp" width="720" height="1600" loading="lazy" alt="Partner home screen showing a live alert: 1 new donation near you, claim it before someone else does."></figure>
+            </li>
+            <li class="step" data-step="2">
+              <span class="step__num">03</span>
+              <h3>Claim</h3>
+              <p>One tap to claim it. The donor sees who&rsquo;s coming, with their name and number.</p>
+              <figure class="phone step__shot"><img src="assets/screens/claim.webp" width="720" height="1600" loading="lazy" alt="Claim this food? sheet: you’re committing to pick up 10 kg of rice before 11:45 AM, with a Claim it button."></figure>
+            </li>
+            <li class="step" data-step="3">
+              <span class="step__num">04</span>
+              <h3>Hand over</h3>
+              <p>At pickup, the donor reads out a private 6&#8209;digit code. The partner types it in, and the food changes hands.</p>
+              <figure class="phone step__shot"><img src="assets/screens/handoff-code.webp" width="720" height="1600" loading="lazy" alt="Confirm the handoff screen with the six-digit code 386 861 entered and a toast saying Pickup confirmed, time to deliver."></figure>
+            </li>
+            <li class="step" data-step="4">
+              <span class="step__num">05</span>
+              <h3>Deliver</h3>
+              <p>Once it reaches the people it&rsquo;s meant for, mark it delivered. Both sides see their impact go up.</p>
+              <figure class="phone step__shot"><img src="assets/screens/delivered.webp" width="720" height="1600" loading="lazy" alt="Mark as delivered? sheet confirming the rice reached the people it’s meant for, with a Yes, it’s delivered button."></figure>
+            </li>
+          </ol>
+
+          <div class="how__sticky" aria-hidden="true">
+            <figure class="phone phone--stage">
+              <img class="is-active" src="assets/screens/post-food.webp" width="720" height="1600" loading="lazy" alt="">
+              <img src="assets/screens/alert-nearby.webp" width="720" height="1600" loading="lazy" alt="">
+              <img src="assets/screens/claim.webp" width="720" height="1600" loading="lazy" alt="">
+              <img src="assets/screens/handoff-code.webp" width="720" height="1600" loading="lazy" alt="">
+              <img src="assets/screens/delivered.webp" width="720" height="1600" loading="lazy" alt="">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Handoff code -->
+    <section class="handoff" id="handoff">
+      <div class="wrap handoff__inner">
+        <p class="eyebrow eyebrow--light reveal">The handoff code</p>
+        <h2 class="h2 reveal">Right food. <em>Right</em>&nbsp;hands.</h2>
+        <p class="lead lead--light reveal">Every claim gets a private six&#8209;digit code that only the donor can see. At pickup the donor says it, the partner enters it. No match, no&nbsp;handoff.</p>
+
+        <div class="code reveal" data-code aria-label="Example handoff code: 386 861">
+          <span class="code__box" aria-hidden="true">3</span>
+          <span class="code__box" aria-hidden="true">8</span>
+          <span class="code__box" aria-hidden="true">6</span>
+          <span class="code__dash" aria-hidden="true"></span>
+          <span class="code__box" aria-hidden="true">8</span>
+          <span class="code__box" aria-hidden="true">6</span>
+          <span class="code__box" aria-hidden="true">1</span>
+        </div>
+        <p class="code__status" data-code-status>
+          <svg aria-hidden="true"><use href="#check"/></svg> Pickup confirmed. Time to deliver.
+        </p>
+
+        <ul class="facts reveal">
+          <li><strong>Only the donor sees it</strong>It appears on their side the moment someone claims.</li>
+          <li><strong>Checked at pickup</strong>A wrong code is turned away, so food reaches the person who claimed it.</li>
+          <li><strong>Proof, if you want it</strong>Partners can add a quick photo of the food they collected.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Details -->
+    <section class="details" id="details">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow reveal">The details</p>
+          <h2 class="h2 reveal">Thought through, down to the small&nbsp;things.</h2>
+        </header>
+
+        <div class="bento">
+          <article class="tile reveal">
+            <div class="tile__copy">
+              <h3>AI fills in the rest.</h3>
+              <p>Add a title and get a description, category, allergens and a shelf-life note. Use them, or don&rsquo;t.</p>
+            </div>
+            <img class="tile__img" src="assets/screens/detail-ai.webp" width="900" height="800" loading="lazy" alt="An AI suggestion card for a rice dish: description, allergens (dairy), a note to eat within 3 to 4 days if refrigerated, and buttons to use the description and 4 servings.">
+          </article>
+
+          <article class="tile reveal">
+            <div class="tile__copy">
+              <h3>Everyone sees the same progress.</h3>
+              <p>Claimed, on the way, picked up, delivered. Live for the donor and the partner.</p>
+            </div>
+            <img class="tile__img" src="assets/screens/detail-progress.webp" width="900" height="950" loading="lazy" alt="Pickup progress tracker at Claimed, and a Ready to go card telling the partner the donor will share a 6-digit code at pickup, with an I’m heading out button.">
+          </article>
+
+          <article class="tile reveal">
+            <div class="tile__copy">
+              <h3>Safe to eat, at a glance.</h3>
+              <p>Every listing counts down to its safe-until time, so food goes out while it&rsquo;s still good.</p>
+            </div>
+            <img class="tile__img" src="assets/screens/detail-safe-until.webp" width="900" height="675" loading="lazy" alt="A listing for veg paneer rice, 10 kg, available, safe until 6:45 PM with 7 hours 29 minutes left, waiting for a partner to claim it, with a Cancel button.">
+          </article>
+
+          <article class="tile tile--radius reveal">
+            <div class="tile__copy">
+              <h3>Your radius, your call.</h3>
+              <p>Choose how far you&rsquo;ll travel. Browse food as a list, or switch to the radar view.</p>
+            </div>
+            <div class="radar" aria-hidden="true">
+              <span class="radar__ring"></span><span class="radar__ring"></span><span class="radar__ring"></span>
+              <span class="radar__dot" style="--x: 30%; --y: 34%"></span>
+              <span class="radar__dot radar__dot--warm" style="--x: 66%; --y: 28%"></span>
+              <span class="radar__dot" style="--x: 72%; --y: 64%"></span>
+              <span class="radar__dot radar__dot--warm" style="--x: 38%; --y: 70%"></span>
+              <svg class="radar__pin"><use href="#mark"/></svg>
+            </div>
+            <ul class="chips" aria-label="Radius options">
+              <li>5 km</li><li class="is-on">10 km</li><li>25 km</li><li>50 km</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="impact" id="impact">
+      <div class="wrap impact__grid">
+        <div class="impact__copy">
+          <p class="eyebrow reveal">Impact</p>
+          <h2 class="h2 reveal">Watch the good add&nbsp;up.</h2>
+          <p class="lead reveal">Meals shared, donations delivered and your all-time rank, with badges as you go. The community leaderboard shows today, this week, this month and all&nbsp;time.</p>
+          <dl class="stats reveal">
+            <div><dt>Meals shared</dt><dd>Every serving counts</dd></div>
+            <div><dt>Badges</dt><dd>From New Partner upward</dd></div>
+            <div><dt>Leaderboard</dt><dd>Today, week, month, all time</dd></div>
+          </dl>
+        </div>
+        <figure class="phone impact__phone reveal">
+          <img src="assets/screens/impact.webp" width="720" height="1600" loading="lazy" alt="Your impact screen: pickups delivered, a New Partner badge with progress to Active Partner, all-time rank, and community totals of 135 meals shared and 9 donations delivered.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- Web app -->
+    <section class="web" id="web">
+      <div class="wrap">
+        <header class="section-head section-head--center">
+          <p class="eyebrow reveal">Also on the web</p>
+          <h2 class="h2 reveal">Prefer a bigger&nbsp;screen?</h2>
+          <p class="lead reveal">Post, browse and claim from any browser. Same account, same food, same&nbsp;impact.</p>
+          <p class="reveal"><a class="link-arrow" href="https://donateforgood.vercel.app" data-webapp target="_blank" rel="noopener">Open the web app</a></p>
+        </header>
+        <figure class="browser reveal">
+          <div class="browser__bar" aria-hidden="true">
+            <span class="browser__dots"><i></i><i></i><i></i></span>
+            <span class="browser__url">donateforgood.vercel.app</span>
+          </div>
+          <img src="assets/screens/web-browse.webp" width="1600" height="967" loading="lazy" alt="The Food Saver web app’s Browse donations page: available food near you, a 10 km radius selector, and cards for veg paneer rice, mango and more, each with a Claim this donation button.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- Install -->
+    <section class="install" id="install">
+      <div class="wrap install__grid">
+        <div>
+          <header class="section-head">
+            <p class="eyebrow reveal">Install</p>
+            <h2 class="h2 reveal">Three steps, about a&nbsp;minute.</h2>
+          </header>
+          <ol class="onboard">
+            <li class="reveal"><span class="onboard__num">1</span><h3>Download</h3><p>Tap Download for Android. The file is about <span data-size>57 MB</span>.</p></li>
+            <li class="reveal"><span class="onboard__num">2</span><h3>Allow the install</h3><p>Open the file. If Android asks, turn on &ldquo;Allow from this source&rdquo; for your browser or Files app.</p></li>
+            <li class="reveal"><span class="onboard__num">3</span><h3>Join Food Saver</h3><p>Open the app, tap Join Food Saver, pick Donor, NGO or Volunteer, and you&rsquo;re&nbsp;in.</p></li>
+          </ol>
+          <p class="install__note reveal">Food Saver isn&rsquo;t on the Play Store yet, so the app comes straight from us. Your browser may ask you to confirm the download, and Android may warn about apps from outside the Play Store. That&rsquo;s expected for an APK.</p>
+        </div>
+        <figure class="phone install__phone reveal">
+          <img src="assets/screens/welcome.webp" width="720" height="1600" loading="lazy" alt="Food Saver’s welcome screen: Good food shouldn’t go to waste, with 135 meals shared, 9 donations delivered and 6 partners active so far, how it works, and Join Food Saver and Log in buttons.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="wrap faq__grid">
+        <h2 class="h2 reveal">Questions</h2>
+        <div class="faq__list">
+          <details class="reveal">
+            <summary>Is Food Saver free?</summary>
+            <p>Yes. There&rsquo;s nothing to pay, for donors, NGOs or volunteers.</p>
+          </details>
+          <details class="reveal">
+            <summary>Is there an iPhone app?</summary>
+            <p>Not yet. On iPhone or iPad, use the <a href="https://donateforgood.vercel.app" data-webapp target="_blank" rel="noopener">web app</a>. It&rsquo;s the same account.</p>
+          </details>
+          <details class="reveal">
+            <summary>Which phones does it work on?</summary>
+            <p>Any phone running <span data-min>Android 7.0 or newer</span>.</p>
+          </details>
+          <details class="reveal">
+            <summary>Why is the first login sometimes slow?</summary>
+            <p>Our server sleeps when nobody&rsquo;s using it. The first request after a quiet spell can take up to a minute; after that it&rsquo;s quick.</p>
+          </details>
+          <details class="reveal">
+            <summary>Who can see my phone number?</summary>
+            <p>Only the other side of a pickup you&rsquo;re part of, so the donor and partner can reach each other.</p>
+          </details>
+          <details class="reveal">
+            <summary>How do I update?</summary>
+            <p>Download the latest version from this page and open it. Your donations and impact are saved to your account, not the phone.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final">
+      <div class="wrap final__inner">
+        <svg class="final__mark reveal" aria-hidden="true"><use href="#mark"/></svg>
+        <h2 class="display display--md reveal">Good food finds a good&nbsp;home.</h2>
+        <div class="cta cta--center reveal">
+          <div data-android-only>
+            <a class="btn btn--lg" href="downloads/food-saver-v1.1.3.apk" download="food-saver-v1.1.3.apk" data-download>
+              <svg class="btn__icon" aria-hidden="true"><use href="#arrow-down"/></svg>
+              Download for Android
+            </a>
+            <p class="cta__meta" data-meta>Version 1.1.3 · 57 MB · Android 7.0 or newer</p>
+            <p class="cta__links">
+              <a href="https://drive.google.com/file/d/1T5UZ30qV-8bKNedRzMd1Q-939sXJRwia/view?usp=sharing" data-drive target="_blank" rel="noopener">Open in Google Drive</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://donateforgood.vercel.app" data-webapp target="_blank" rel="noopener">Use the web app</a>
+            </p>
+          </div>
+          <div class="ios-note" data-ios-only>
+            <p>Food Saver is on Android for now. On iPhone, use the web app.</p>
+            <a class="btn btn--lg" href="https://donateforgood.vercel.app" data-webapp>Open the web app</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+    <div class="maker">
+      <div>
+        <p class="maker__credit">Designed &amp; built by <a href="https://aditya-profile-26.vercel.app/" target="_blank" rel="me noopener">Aditya Gupta</a></p>
+        <p class="maker__bio">Full-stack developer. Built Food Saver end to end: the Android app, the web app and the API behind them.</p>
+      </div>
+      <nav class="maker__links" aria-label="Aditya Gupta online">
+        <a href="https://aditya-profile-26.vercel.app/" target="_blank" rel="me noopener">Portfolio</a>
+        <a href="https://www.linkedin.com/in/adityagupta-swe/" target="_blank" rel="me noopener">LinkedIn</a>
+        <a href="https://github.com/Adityaguptawebdev" target="_blank" rel="me noopener">GitHub</a>
+      </nav>
+    </div>
+    <div class="footer__inner">
+      <a class="brand brand--light" href="#top">
+        <svg class="brand__mark" aria-hidden="true"><use href="#mark"/></svg>
+        <span>Food Saver</span>
+      </a>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#how">How it works</a>
+        <a href="#install">Install</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://donateforgood.vercel.app" data-webapp target="_blank" rel="noopener">Web app</a>
+      </nav>
+      <p class="footer__fine">Version <span data-version>1.1.3</span> · &copy; <span data-year>2026</span> Food Saver</p>
+    </div>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
