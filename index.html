@@ -65,6 +65,9 @@
     <symbol id="check" viewBox="0 0 24 24">
       <path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="play" viewBox="0 0 24 24">
+      <path d="M8.5 5.8v12.4a.8.8 0 0 0 1.2.7l10-6.2a.8.8 0 0 0 0-1.4l-10-6.2a.8.8 0 0 0-1.2.7z" fill="currentColor"/>
+    </symbol>
   </svg>
 
   <header class="nav" data-nav>
@@ -120,6 +123,24 @@
           <figure class="phone phone--front" data-parallax="0.03">
             <img src="assets/screens/donor-home.webp" width="720" height="1600" fetchpriority="high" alt="Food Saver home screen for a donor: “Got extra food today?” with a Post food button, a live donation of veg paneer rice and the donor’s impact.">
           </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Film: plays only when asked, since it has a voice-over -->
+    <section class="film" id="film" aria-label="Food Saver film">
+      <div class="wrap">
+        <div class="film__wrap reveal" data-film>
+          <figure class="film__frame">
+            <video class="film__video" controls preload="none" playsinline width="1920" height="1080" poster="assets/video/film-poster.webp">
+              <source src="assets/video/food-saver-film.mp4" type="video/mp4">
+            </video>
+          </figure>
+          <button class="film__play" type="button" data-film-play aria-label="Play the Food Saver film, 1 minute">
+            <span class="film__icon" aria-hidden="true"><svg><use href="#play"/></svg></span>
+            Watch the film
+            <span class="film__time" aria-hidden="true">1:00</span>
+          </button>
         </div>
       </div>
     </section>
