@@ -114,6 +114,12 @@ section[id], #download { scroll-margin-top: calc(var(--nav-h) + 16px); }
 .btn--sm { min-height: 40px; padding: 0 16px; font-size: .88rem; }
 .btn--lg { min-height: 58px; padding: 0 30px; font-size: 1.06rem; }
 .btn__icon { width: 20px; height: 20px; flex: none; }
+/* Secondary button: outline, used for "Open the web app" next to the download */
+.btn--ghost { background: transparent; box-shadow: inset 0 0 0 1.5px rgba(29, 58, 47, .3); }
+.btn--ghost:hover { background: rgba(29, 58, 47, .06); }
+.btn--ghost:active { box-shadow: inset 0 0 0 1.5px rgba(29, 58, 47, .3); }
+.btn--ghost .btn__icon { width: 18px; height: 18px; }
+.btn-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 
 .cta { margin-top: 36px; }
 .cta__meta { margin-top: 14px; font-size: .86rem; color: var(--soft); letter-spacing: .005em; }
@@ -122,6 +128,7 @@ section[id], #download { scroll-margin-top: calc(var(--nav-h) + 16px); }
 .cta__links a:hover { text-decoration-color: currentColor; }
 .cta--center { text-align: center; }
 .cta--center .cta__links { justify-content: center; }
+.cta--center .btn-row { justify-content: center; }
 .ios-note p { color: var(--soft); max-width: 26em; margin-bottom: 18px; }
 .cta--center .ios-note p { margin-left: auto; margin-right: auto; }
 
@@ -442,6 +449,9 @@ section[id], #download { scroll-margin-top: calc(var(--nav-h) + 16px); }
   font-size: .78rem; color: var(--soft); background: rgba(255, 252, 245, .9);
   padding: 5px 14px; border-radius: 8px; max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
+.browser-link { display: block; max-width: 1080px; margin: 0 auto; border-radius: 18px; text-decoration: none; }
+.browser-link .browser { transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
+.browser-link:hover .browser { transform: translateY(-4px); box-shadow: 0 0 0 1px rgba(29, 58, 47, .12), 0 60px 110px -40px rgba(21, 43, 34, .36), 0 28px 52px -32px rgba(21, 43, 34, .26); }
 @media (max-width: 520px) { .browser { border-radius: 12px; } .browser__bar { height: 30px; } .browser__dots { display: none; } .browser__url { font-size: .7rem; padding: 3px 10px; } }
 
 /* ---------- Install ---------- */
@@ -481,6 +491,8 @@ section[id], #download { scroll-margin-top: calc(var(--nav-h) + 16px); }
 .final .cta { margin-top: 44px; }
 .final .cta__meta, .final .cta__links, .final .ios-note p { color: rgba(245, 239, 227, .62); }
 .final .cta__links a { color: var(--cream); text-decoration-color: rgba(245, 239, 227, .35); }
+.final .btn--ghost { color: var(--cream); box-shadow: inset 0 0 0 1.5px rgba(245, 239, 227, .38); }
+.final .btn--ghost:hover { background: rgba(245, 239, 227, .08); }
 
 .footer { background: var(--ink-deep); color: rgba(245, 239, 227, .6); padding: 48px 0 calc(36px + env(safe-area-inset-bottom)); font-size: .88rem; }
 
